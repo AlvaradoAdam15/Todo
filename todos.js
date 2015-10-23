@@ -18,6 +18,13 @@ $(document).ready(function() {
           $currentListItem.remove();
         });
 
+            $('.item').dblclick(function(){
+                $('.item').hide();
+                $('.edit').show();
+            });
+
+
+
         $('.toggle').on('click', function(e) {
           var $currentListItemLabel = $(this).closest('li').find('label');
 		  /*
@@ -44,11 +51,12 @@ $(document).ready(function() {
 				"<li>" +
           "<div class='view'>" +
             "<input class='toggle' type='checkbox'>" +
-            "<label data=''>" + " " + $('#new-todo').val() + "</label>" +
+            "<input class='edit' type='text' style='display:none'>" +
+            "<label  class='item' data=''>" + " " + $('#new-todo').val() + "</label>" +
             "<a class='destroy'></a>" +
           "</div>" +
         "</li>";
-   	  
+
 	  $(this).val('');
 		$todoList.html(todos);
 		runBind();
@@ -56,4 +64,3 @@ $(document).ready(function() {
     
   }}); // end if
 });
-
