@@ -21,6 +21,13 @@ $(document).ready(function() {
             $('.item').dblclick(function(){
                 $('.item').hide();
                 $('.edit').show();
+                $('.edit').keypress(function(e) {
+                    if (e.which === EnterKey) {
+                        $('.edit').hide();
+                        $('.item').text($('.edit').val());
+                        $('.item').show();
+                    }
+                });
             });
 
 
