@@ -33,15 +33,15 @@ $(document).ready(function() {
             });
 
             $('#all').on('click', function(e) {
-                $('.item').show();
+
             });
 
             $('#active').on('click', function(e) {
-                $('.item').hide().filter('.active').show();
+
             });
 
             $('#completed').on('click', function(e) {
-                $('.item').hide().filter('.completed').show();
+
             });
 
 
@@ -52,13 +52,11 @@ $(document).ready(function() {
 		   */
 		  if ( $currentListItemLabel.attr('data') == 'done' ) {
 			  $currentListItemLabel.attr('data', '');
-              $currentListItemLabel.attr('class', 'active');
 		      $currentListItemLabel.css('text-decoration', 'none');
 
 		  }
 		  else {
 			  $currentListItemLabel.attr('data', 'done');
-              $currentListItemLabel.attr('class', 'completed');
               $currentListItemLabel.css('text-decoration', 'line-through');
 
 		  }
@@ -76,7 +74,7 @@ $(document).ready(function() {
           "<div class='view'>" +
             "<input class='toggle' type='checkbox'>" +
             "<input class='edit' type='text' style='display:none'>" +
-            "<label class='item' class='active' data=''>" + " " + $('#new-todo').val() + "</label>" +
+            "<label class='item' data=''>" + " " + $('#new-todo').val() + "</label>" +
             "<a class='destroy'></a>" +
           "</div>" +
         "</li>";
