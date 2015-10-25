@@ -7,7 +7,7 @@
 
     <title>Document</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootsrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"
 
 </head>
 
@@ -23,11 +23,23 @@
 
 
                 <ol class="list-group">
-                    <li v-repeat="tasks">{{ $value }}</li>
+                    <li v-repeat="task: tasks">{{ task.body }}</li>
                 </ol>
 
-                
+
             </div>
+
+            <form>
+
+                <div class="form-group">
+
+                    <input class="form-control" placeholder="I need to...">
+
+                    <button class="btn btn-primary">Add Task</button>
+
+                </div>
+
+            </form>
 
         </div>
 
