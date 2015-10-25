@@ -68,6 +68,6 @@ $(document).ready(function() {
 		$todoList.html(todos);
 		runBind();
 		$('#main').show();
-    
+        $('#footer').show();
   }}); // end if
 });
