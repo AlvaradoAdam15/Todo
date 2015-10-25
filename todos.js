@@ -19,17 +19,30 @@ $(document).ready(function() {
         });
 
             $('.item').dblclick(function(){
-                $('.item').hide();
-                $('.edit').show();
-                $('.edit').keypress(function(e) {
+                var $Item = $(this).closest('li').find('label');
+                var $editItem = $(this).closest('li').find('input').filter('.edit');
+                $Item.hide();
+                $editItem.show();
+                $editItem.keypress(function(e) {
                     if (e.which === EnterKey) {
-                        $('.edit').hide();
-                        $('.item').text($('.edit').val());
-                        $('.item').show();
+                        $editItem.hide();
+                        $Item.text($editItem.val());
+                        $Item.show();
                     }
                 });
             });
 
+            $('#all').on('click', function(e) {
+                $('.item').show();
+            });
+
+            $('#active').on('click', function(e) {
+                $('.item').hide().filter('.active').show();
+            });
+
+            $('#completed').on('click', function(e) {
+                $('.item').hide().filter('.completed').show();
+            });
 
 
         $('.toggle').on('click', function(e) {
@@ -39,11 +52,15 @@ $(document).ready(function() {
 		   */
 		  if ( $currentListItemLabel.attr('data') == 'done' ) {
 			  $currentListItemLabel.attr('data', '');
+              $currentListItemLabel.attr('class', 'active');
 		      $currentListItemLabel.css('text-decoration', 'none');
+
 		  }
 		  else {
 			  $currentListItemLabel.attr('data', 'done');
-        $currentListItemLabel.css('text-decoration', 'line-through');
+              $currentListItemLabel.attr('class', 'completed');
+              $currentListItemLabel.css('text-decoration', 'line-through');
+
 		  }
 			});
 		}
@@ -59,7 +76,7 @@ $(document).ready(function() {
           "<div class='view'>" +
             "<input class='toggle' type='checkbox'>" +
             "<input class='edit' type='text' style='display:none'>" +
-            "<label  class='item' data=''>" + " " + $('#new-todo').val() + "</label>" +
+            "<label class='item' class='active' data=''>" + " " + $('#new-todo').val() + "</label>" +
             "<a class='destroy'></a>" +
           "</div>" +
         "</li>";
@@ -69,5 +86,6 @@ $(document).ready(function() {
 		runBind();
 		$('#main').show();
         $('#footer').show();
+
   }}); // end if
 });
