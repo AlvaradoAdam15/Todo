@@ -33,7 +33,7 @@
 
                         {{task.body}}
 
-                        <button>&#10007</button>
+                        <button v-on="click: removeTask(task)">&#10007</button>
 
                     </li>
                 </ol>

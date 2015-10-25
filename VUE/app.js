@@ -30,7 +30,10 @@ new Vue({
             });
 
             this.newTask = '';
+        },
 
+        removeTask: function(task){
+            this.tasks.$remove(task);
         }
     }
 
