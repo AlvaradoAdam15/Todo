@@ -19,13 +19,13 @@
 
         <div id="tasks">
 
-            <div>
+            <div v-show="remaining.length">
 
-                <h1>Tasks({{tasks.length}})</h1>
+                <h1>Tasks({{remaining.length}})</h1>
 
 
                 <ol class="list-group">
-                    <li v-repeat="task: tasks"
+                    <li v-repeat="task: tasks | inProcess"
 
                         class="list-group-item"
 
@@ -34,6 +34,9 @@
                         <span v-on="dblclick: editTask(task)">{{task.body}}</span>
 
                         <button v-on="click: removeTask(task)">&#10007</button>
+
+                        <button v-on="click: completeTask(task)">&#10004</button>
+
 
                     </li>
                 </ol>
@@ -53,7 +56,24 @@
 
                     <button class="btn btn-primary">Add Task</button>
 
+                    <button v-on="click: completeAll" class="btn btn-default">Mark all as completed</button>
             </form>
+
+            <div v-if="completions.length">
+
+                <h2>Completed({{completions.length}})</h2>
+
+                <ol class="list-group">
+
+                    <li v-repeat="task: tasks | filterBy true in completed" class="list-group-item">
+
+                        {{task.body}}
+
+                    </li>
+
+                </ol>
+
+            </div>
 
         </div>
 
