@@ -5,11 +5,7 @@ new Vue({
     el: '#tasks',
 
     data: {
-        tasks:[
-
-            { body: 'Go to the store', completed: false }
-
-        ],
+        tasks:[],
 
         newTask:''
     },
@@ -51,6 +47,7 @@ new Vue({
 
             e.preventDefault();
 
+            if (! this.newTask) return;
 
             this.tasks.push({
 
@@ -73,9 +70,9 @@ new Vue({
 
         },
 
-        completeTask: function(task){
+        toggleTaskCompletion: function(task){
 
-            task.completed = true;
+            task.completed = ! task.completed;
 
         },
 
@@ -89,6 +86,12 @@ new Vue({
 
         removeTask: function(task){
             this.tasks.$remove(task);
+        },
+
+        clearCompleted: function(){
+            this.tasks = this.tasks.filter(function(task){
+                return ! task.completed;
+            });
         }
     }
 
