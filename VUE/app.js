@@ -32,6 +32,16 @@ new Vue({
             this.newTask = '';
         },
 
+        editTask: function(task){
+
+            this.removeTask(task);
+
+            this.newTask = task.body;
+
+            this.$$.newTask.focus();
+
+        },
+
         removeTask: function(task){
             this.tasks.$remove(task);
         }

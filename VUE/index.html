@@ -31,7 +31,7 @@
 
                     >
 
-                        {{task.body}}
+                        <span v-on="dblclick: editTask(task)">{{task.body}}</span>
 
                         <button v-on="click: removeTask(task)">&#10007</button>
 
@@ -46,6 +46,7 @@
                 <div class="form-group">
 
                     <input v-model="newTask"
+                           v-el="newTask"
                            class="form-control"
                            placeholder="I need to...">
                 </div>
